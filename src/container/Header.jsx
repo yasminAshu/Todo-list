@@ -1,5 +1,4 @@
 import React  from 'react';
-import {AddTodo} from '../action.js'
 import styled from 'styled-components'
 
 const Input = styled.input`

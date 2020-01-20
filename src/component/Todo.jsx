@@ -30,7 +30,9 @@ export const Todo = props => {
     <>
       <LI>
         {props.todo.name}
-        <CloseSpan onClick={() => props.deleteTodo(props.todo.id)}>&times;</CloseSpan>
+        <CloseSpan onClick={() => props.deleteTodo(props.todo.id)}>
+          &times;
+        </CloseSpan>
       </LI>
     </>
   );
