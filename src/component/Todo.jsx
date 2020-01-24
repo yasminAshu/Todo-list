@@ -25,6 +25,11 @@ const CloseSpan = styled.span`
     background: #bbb;
   }
 `;
+
+ /**
+ *
+ *@discription - This function is to show todo list
+ */
 export const Todo = props => {
   return (
     <>

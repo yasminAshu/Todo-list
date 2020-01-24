@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Todo } from "./Todo.jsx";
 import styled from "styled-components";
 
@@ -10,21 +10,25 @@ const UL = styled.ul`
   list-style-type: none;
   padding: 0;
 `;
-class TodoList extends React.Component {
-  componentDidMount() {
-    this.props.getTodos();
-  }
-  render() {
-    return (
-      <TodoListContainer>
-        <UL>
-          {this.props.todos &&
-            this.props.todos.map((todo, index) => {
-              return <Todo todo={todo} deleteTodo={this.props.deleteTodo} />;
-            })}
-        </UL>
-      </TodoListContainer>
-    );
-  }
-}
+
+/**
+ *
+ *@discription - This function is to render
+ */
+const TodoList = props => {
+  useEffect(() => {
+    props.getTodos();
+  }, []);
+
+  return (
+    <TodoListContainer>
+      <UL>
+        {props.todos &&
+          props.todos.map((todo, index) => {
+            return <Todo todo={todo} deleteTodo={props.deleteTodo} />;
+          })}
+      </UL>
+    </TodoListContainer>
+  );
+};
 export default TodoList;

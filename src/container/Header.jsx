@@ -1,5 +1,5 @@
-import React  from 'react';
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
 const Input = styled.input`
   display: block;
@@ -31,53 +31,64 @@ const Button = styled.button`
 `;
 
 const TodoContainer = styled.div`
-    width: 80%;
-    margin-left: 10%;
+  width: 80%;
+  margin-left: 10%;
 `;
 const InputContainer = styled.div`
   position: relative;
   display: flex;
   align-items: stretch;
-`
-class Header extends React.Component{
-    constructor(props){
-        super(props)
-        this.state = {
-            text:""
-        }
+`;
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: ""
+    };
+  }
+
+  /**
+ *
+ *@discription - This function is for saving todo list
+ */
+  onChange = e => {
+    const { value: text } = e.target;
+    this.setState({
+      text
+    });
+  };
+
+ /**
+ *
+ *@discription - This function is save todo on enter
+ */
+  onKeyDown = e => {
+    const { value } = e.target;
+
+    if (e.which === 13) {
+      this.props.addTodo(value);
+      this.setState({
+        text: ""
+      });
     }
+  };
 
-    onChange = e => {
-        const { value: text } = e.target;
-        this.setState({
-          text,
-        });
-      };
-
-      onKeyDown = e => {
-        const { value } = e.target;
-    
-        if (e.which === 13) {
-          this.props.addTodo(value);
-          this.setState({
-            text: '',
-          });
-          
-        }
-      };
-
-    render(){
-        return (
-            <TodoContainer>
-                <Label htmlFor = "addTodo">Add Todo</Label>
-                <InputContainer>
-                <Input  id = "addTodo" type = "text" onChange = {this.onChange} onKeyDown = {this.onKeyDown} />
-               <Button onClick = {this.addTodo} >Add Toto </Button>
-            </InputContainer>
-         </TodoContainer>
-        )
-    }
+  render() {
+    return (
+      <TodoContainer>
+        <Label htmlFor="addTodo">Add Todo</Label>
+        <InputContainer>
+          <Input
+            id="addTodo"
+            type="text"
+            onChange={this.onChange}
+            onKeyDown={this.onKeyDown}
+          />
+          <Button onClick={()=>this.props.addTodo(this.state.text)}>Add Toto </Button>
+        </InputContainer>
+      </TodoContainer>
+    );
+  }
 }
 
-  export default Header
-
+export default Header;

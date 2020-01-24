@@ -2,12 +2,17 @@ import React from "react";
 import styled from "styled-components";
 
 const NotificationDiv = styled.div`
-  background-color: #ff7272;
+  background-color: #0080ff;
   color: white;
   padding: 1em;
 }
 `;
 
+/**
+ *
+ *@discription - This HOC for Showing Data fetching information
+  @return - Jsx of the HOc
+ */
 const withErrorHandling = WrappedComponent => ({ isFetching, children }) => {
   const text =
     isFetching && isFetching !== "error"
